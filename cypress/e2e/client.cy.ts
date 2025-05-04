@@ -1,11 +1,11 @@
 /// <reference types="cypress" />
 
 describe('Página de Clientes', () => {
-    const API_URL = 'http://localhost:3000'; // substitua pela sua URL real da API se for diferente
+    const API_URL = 'http://localhost:3000';
   
     beforeEach(() => {
         localStorage.setItem('user', JSON.stringify({ name: 'teste' }));
-        cy.visit('/clients'); // Visita a página inicial para garantir que o usuário esteja logado
+        cy.visit('/clients'); 
       cy.intercept('GET', `${API_URL}/clients*`, {
         statusCode: 200,
         body: {
