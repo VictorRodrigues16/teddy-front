@@ -1,6 +1,7 @@
 import { MinusIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { PlusIcon } from "@heroicons/react/24/solid";
 import Client from "../../types/pages/Clients/interface-clients";
+import { formatValues } from "../../utils/formatValues";
 
 
 interface ClientCardProps {
@@ -12,11 +13,11 @@ interface ClientCardProps {
 
 const ClientCard = ({ client, onEdit, onDelete, onAdd }: ClientCardProps) => {
   return (
-    <div className=" client-card bg-white shadow-md rounded-lg p-4 flex flex-col items-center justify-between">
-      <div className="w-full flex flex-col items-center justify-center mb-4 text-center">
+    <div className=" client-card bg-white shadow-md rounded-lg p-4 flex flex-col h-60 items-center justify-between">
+      <div className="w-full flex flex-col items-center justify-center mb-4 gap-2 text-center">
         <h2 className="text-lg font-bold">{client.name}</h2>
-        <p className="text-gray-600">{client.salary}</p>
-        <p className="text-gray-800">${client.value}</p>
+        <p className="text-base text-gray-600">Salário: {formatValues(client.salary)}</p>
+        <p className="text-gray-800">Empresa: {formatValues(client.value)}</p>
       </div>
       <div className="w-full flex items-center justify-between mt-4">
         {client.selected === true ? (

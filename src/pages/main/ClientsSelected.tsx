@@ -3,7 +3,7 @@ import { MainLayout } from "../../layouts/MainLayout";
 import Client from "../../types/pages/Clients/interface-clients";
 import { Button } from "../../components/general/Button";
 import ClientSelectedCard from "../../components/client/ClientSelectedCard";
-import axios from "axios";
+import api from "../../services/api";
 
 export default function ClientsSelected() {
   const [totalClients, setTotalClients] = useState<number>(0);
@@ -13,7 +13,7 @@ export default function ClientsSelected() {
   const fetchClients = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get("http://localhost:3000/clients", {
+      const response = await api.get("/clients", {
         params: {
           page: 1,
           limit: 10000,
@@ -44,8 +44,8 @@ export default function ClientsSelected() {
     try {
       const data = {
         ids: clients.map((client) => client.id),
-      }
-      await axios.post(`http://localhost:3000/clients/select`, data);
+      };
+      await api.post(`/clients/select`, data);
       fetchClients();
     } catch (error) {
       console.error("Error deleting client:", error);
@@ -63,10 +63,7 @@ export default function ClientsSelected() {
     };
 
     try {
-      await axios.put(
-        `http://localhost:3000/clients/${clientId}`,
-        data
-      );
+      await api.put(`/clients/${clientId}`, data);
       fetchClients();
     } catch (error) {
       console.error("Error adding client:", error);
@@ -102,7 +99,10 @@ export default function ClientsSelected() {
               ))}
             </div>
 
-            <Button onClick={() => handleRemoveAllClients()} className="bg-orange-500 w-full hover:bg-orange-600 transition-all cursor-pointer text-white font-bold py-2 px-4 rounded mt-4">
+            <Button
+              onClick={() => handleRemoveAllClients()}
+              className="bg-orange-500 w-full hover:bg-orange-600 transition-all cursor-pointer text-white font-bold py-2 px-4 rounded mt-4"
+            >
               Limpar clientes selecionados
             </Button>
           </div>

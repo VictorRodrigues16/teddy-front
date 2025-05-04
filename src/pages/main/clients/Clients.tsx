@@ -5,7 +5,6 @@ import ModalDelete from "../../../components/modals/modal-delete-client";
 import ModalEdit from "../../../components/modals/modal-edit-client";
 import ModalAdd from "../../../components/modals/modal-add-client";
 import ClientCard from "../../../components/client/ClientCard";
-import axios from "axios";
 import Client from "../../../types/pages/Clients/interface-clients";
 import Modal from "../../../components/modals/modal-new-client";
 import api from "../../../services/api";
@@ -26,7 +25,7 @@ export default function Clients() {
   const fetchClients = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get("http://localhost:3000/clients", {
+      const response = await api.get("/clients", {
         params: {
           page: currentPage,
           limit: clientsPerPage,
@@ -73,7 +72,7 @@ export default function Clients() {
     };
 
     try {
-      await axios.put(`http://localhost:3000/clients/${clientId}`, data);
+      await api.put(`/clients/${clientId}`, data);
       setIsAddClientModalOpen(false);
       fetchClients();
     } catch (error) {
@@ -87,7 +86,7 @@ export default function Clients() {
     if (isLoading) return;
     setIsLoading(true);
     try {
-      await axios.post("http://localhost:3000/clients", data);
+      await api.post("/clients", data);
       setIsCreateClientModalOpen(false);
       fetchClients();
     } catch (error) {
@@ -101,7 +100,7 @@ export default function Clients() {
     if (isLoading) return;
     setIsLoading(true);
     try {
-      await axios.put(`http://localhost:3000/clients/${data.id}`, data);
+      await api.put(`/clients/${data.id}`, data);
       setIsEditClientModalOpen(false);
       fetchClients();
     } catch (error) {
