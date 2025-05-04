@@ -7,7 +7,7 @@ import ModalAdd from "../../../components/modals/modal-add-client";
 import ClientCard from "../../../components/client/ClientCard";
 import Client from "../../../types/pages/Clients/interface-clients";
 import Modal from "../../../components/modals/modal-new-client";
-import { api } from "../../../services/api";
+import api from "../../../services/api";
 
 export default function Clients() {
   const [totalClients, setTotalClients] = useState<number>(0);
@@ -86,6 +86,7 @@ export default function Clients() {
     if (isLoading) return;
     setIsLoading(true);
     try {
+      console.log(data)
       await api.post("/clients", data);
       setIsCreateClientModalOpen(false);
       fetchClients();
@@ -148,7 +149,7 @@ export default function Clients() {
           </div>
         ) : (
           <div className="w-3/4">
-            <div className="w-full flex items-center justify-between">
+            <div className="w-full flex md:flex-row flex-col items-center justify-between">
               <h1 className="text-base font-bold text-center text-gray-800 mb-4">
                 <span className="font-semibold text-lg">
                   {totalClients} clientes encontrados:{" "}
@@ -196,7 +197,7 @@ export default function Clients() {
               Criar Cliente
             </Button>
 
-            <div className="w-full flex items-center justify-center mt-4">
+            <div className="w-full flex items-center justify-center mt-4 mb-6">
               {Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => (
                 <button
                   key={page}

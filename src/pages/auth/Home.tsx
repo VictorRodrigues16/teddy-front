@@ -39,12 +39,12 @@ export default function Home() {
           value={user}
           onChange={(e) => setUser(e.target.value)}
           placeholder="Digite seu nome: "
-          className="w-1/3 placeholder:text-xl placeholder:text-slate-400 rounded-none text-xl text-slate-700 px-4 py-3 border border-gray-300 shadow-sm focus:outline-none focus:ring-1 focus:ring-slate-400"
+          className="xl:w-1/3 lg:max-w-2/4 md:w-2/3 w-full placeholder:text-xl placeholder:text-slate-400 rounded-none text-xl text-slate-700 px-4 py-3 border border-gray-300 shadow-sm focus:outline-none focus:ring-1 focus:ring-slate-400"
         />
         {error && <p className="text-red-500 text-lg mt-2">{error}</p>}
         <Button
           onClick={handleLogin}
-          className="mt-4 w-1/3 text-2xl bg-orange-500 hover:bg-orange-600 transition-all cursor-pointer text-white font-semibold"
+          className="mt-4 xl:w-1/3 lg:max-w-2/4 md:w-2/3 w-full text-2xl bg-orange-500 hover:bg-orange-600 transition-all cursor-pointer text-white font-semibold"
         >
           Entrar
         </Button>

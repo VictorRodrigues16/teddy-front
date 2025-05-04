@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Sidebar from "./Sidebar";
+import { handleLogout } from "../utils/handleLogout";
 
 export default function NavBar() {
   const [user, setUser] = useState<string>();
   const location = useLocation(); 
 
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    window.location.href = "/";
-  }
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -26,10 +23,10 @@ export default function NavBar() {
     <header className="bg-white shadow-xl text-white flex items-center justify-between p-4 z-50 w-full px-7">
       <div className="flex items-center gap-4">
         <Sidebar />
-        <img src='https://iili.io/3wVXLvt.png' alt="Logo" className="w-28" />
+        <img src='https://iili.io/3wVXLvt.png' alt="Logo" className="w-28 hidden md:block" />
       </div>
 
-      <nav className="flex gap-6 text-black font-base inter text-lg">
+      <nav className="flex gap-3 text-black font-base inter text-lg">
         <Link
           to="/clients"
           className={`${linkClass} ${location.pathname === "/clients" ? "text-orange-500 underline" : ""}`}
@@ -44,13 +41,13 @@ export default function NavBar() {
         </Link>
         <button
           onClick={handleLogout}
-          className={`cursor-pointer ${linkClass} ${location.pathname === "/sair" ? "text-orange-500 underline" : ""}`}
+          className={`cursor-pointer hidden sm:block ${linkClass} ${location.pathname === "/sair" ? "text-orange-500 underline" : ""}`}
         >
           Sair
         </button>
       </nav>
 
-      <h1 className="text-lg inter flex items-center gap-2 text-black">
+      <h1 className="hidden md:block text-lg inter items-center gap-2 text-black">
         Olá, <span className="font-bold">{user}!</span>
       </h1>
     </header>

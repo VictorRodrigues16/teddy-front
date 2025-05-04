@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Bars3Icon } from "@heroicons/react/24/outline"; // Ícone de barrinhas
+import { ArrowLeftEndOnRectangleIcon, Bars3Icon } from "@heroicons/react/24/outline"; // Ícone de barrinhas
 import { Link } from "react-router-dom";
 import { HomeIcon, Squares2X2Icon, UserIcon } from "@heroicons/react/24/solid";
+import { handleLogout } from "../utils/handleLogout";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,6 +38,10 @@ export default function Sidebar() {
           <Link to="" className="hover:text-gray-400 flex gap-3 transition">
           <Squares2X2Icon className="h-6 w-6 inline-block mr-2" />
             Produtos
+          </Link>
+          <Link to="" onClick={handleLogout} className="hover:text-gray-400 flex gap-3 transition">
+          <ArrowLeftEndOnRectangleIcon className="h-6 w-6 inline-block mr-2" />
+            Sair
           </Link>
         </nav>
       </div>

@@ -3,7 +3,7 @@ import { MainLayout } from "../../layouts/MainLayout";
 import Client from "../../types/pages/Clients/interface-clients";
 import { Button } from "../../components/general/Button";
 import ClientSelectedCard from "../../components/client/ClientSelectedCard";
-import { api } from "../../services/api";
+import api from "../../services/api";
 
 export default function ClientsSelected() {
   const [totalClients, setTotalClients] = useState<number>(0);
