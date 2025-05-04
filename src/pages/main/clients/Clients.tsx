@@ -7,7 +7,7 @@ import ModalAdd from "../../../components/modals/modal-add-client";
 import ClientCard from "../../../components/client/ClientCard";
 import Client from "../../../types/pages/Clients/interface-clients";
 import Modal from "../../../components/modals/modal-new-client";
-import api from "../../../services/api";
+import { api } from "../../../services/api";
 
 export default function Clients() {
   const [totalClients, setTotalClients] = useState<number>(0);

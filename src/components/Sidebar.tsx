@@ -22,7 +22,7 @@ export default function Sidebar() {
         } w-64`}
       >
         <div className="bg-zinc-700 h-1/5 flex items-center justify-center">
-          <img src="./src/assets/teddy.png" alt="Logo" className="w-28" />
+          <img src='https://iili.io/3wVXLvt.png' alt="Logo" className="w-28" />
         </div>
 
         <nav className="flex flex-col gap-10 text-black pt-10 px-8 inter">

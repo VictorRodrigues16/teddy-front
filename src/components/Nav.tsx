@@ -26,7 +26,7 @@ export default function NavBar() {
     <header className="bg-white shadow-xl text-white flex items-center justify-between p-4 z-50 w-full px-7">
       <div className="flex items-center gap-4">
         <Sidebar />
-        <img src="./src/assets/teddy.png" alt="Logo" className="w-28" />
+        <img src='https://iili.io/3wVXLvt.png' alt="Logo" className="w-28" />
       </div>
 
       <nav className="flex gap-6 text-black font-base inter text-lg">
